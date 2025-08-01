@@ -37,6 +37,27 @@
   --accent-color-rgb: 37, 99, 235;
 }
 
+
+
+/* Add this to your global CSS */
+.skill-border {
+  position: relative;
+  background: var(--secondary-bg);
+  border-radius: 0.5rem;
+}
+
+.skill-border::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(to right, var(--accent-color), purple);
+  border-radius: 0.6rem;
+  z-index: -1;
+}
+
 /*
   Global Styles
 */

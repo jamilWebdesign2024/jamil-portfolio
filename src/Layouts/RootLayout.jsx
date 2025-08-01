@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from '../Shared/Navbar';
 import Banner from '../Components/Banner';
+import About from '../Components/About';
+import Skills from '../Components/Skills';
 
 const RootLayout = () => {
     return (
@@ -9,6 +11,8 @@ const RootLayout = () => {
 
            <main>
                 <Banner/>
+                <About/>
+                <Skills/>
            </main>
         </div>
     );
