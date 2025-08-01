@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Global CSS Variables
+*/
+:root {
+  /* Light Theme Colors */
+  --primary-bg: #FFFFFF;
+  --secondary-bg: #F3F4F6;
+  --navbar-bg: #1A1C20;
+  --text-color: #374151;
+  --heading-color: #111827;
+  --accent-color: #3B82F6;
+  --accent-hover: #2563EB;
+  --link-color: #9CA3AF;
+  --link-hover: #FFFFFF;
+  --shadow-color: #9CA3AF;
+  --accent-color-rgb: 59, 130, 246;
+}
+
+.dark {
+  /* Dark Theme Colors */
+  --primary-bg: #111827;
+  --secondary-bg: #1F2937;
+  --navbar-bg: #1A1C20;
+  --text-color: #D1D5DB;
+  --heading-color: #FFFFFF;
+  --accent-color: #3B82F6;
+  --accent-hover: #2563EB;
+  --link-color: #9CA3AF;
+  --link-hover: #FFFFFF;
+  --shadow-color: #1F2937;
+  --accent-color-rgb: 37, 99, 235;
+}
+
+/*
+  Global Styles
+*/
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*
+  Custom Scrollbar Styles
+*/
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--secondary-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}
+
+/*
+  Animation Styles
+*/
+@keyframes pulseLight {
+  0% {
+    opacity: 0.1;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.1;
+    transform: scale(0.95);
+  }
+}
+
+.animate-pulse-light {
+  animation: pulseLight 4s ease-in-out infinite;
+}
+
+
+/* Enhanced gradient animations */
+@keyframes smooth-pulse {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.02);
+  }
+}
+
+.animate-smooth-pulse {
+  animation: smooth-pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Experience badge gradient effect */
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
