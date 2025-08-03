@@ -4,6 +4,7 @@ import Banner from '../Components/Banner';
 import About from '../Components/About';
 import Skills from '../Components/Skills';
 import Education from '../Components/Education';
+import Projects from '../Components/Projects';
 
 const RootLayout = () => {
     return (
@@ -15,6 +16,7 @@ const RootLayout = () => {
                 <About />
                 <Skills />
                 <Education />
+                <Projects/>
             </main>
         </div>
     );
