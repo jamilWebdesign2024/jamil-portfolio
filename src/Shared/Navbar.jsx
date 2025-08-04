@@ -34,7 +34,7 @@ const Navbar = () => {
           style={{ color: 'var(--heading-color)' }}
         >
           <span className="text-3xl" style={{ color: 'var(--accent-color)' }}>&lt;</span>
-          SS
+          Jamil
           <span className="text-3xl" style={{ color: 'var(--accent-color)' }}>/&gt;</span>
         </div>
 

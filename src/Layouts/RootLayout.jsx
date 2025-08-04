@@ -5,6 +5,8 @@ import About from '../Components/About';
 import Skills from '../Components/Skills';
 import Education from '../Components/Education';
 import Projects from '../Components/Projects';
+import Quotes from '../Components/Testiomonials';
+import Experienced from '../Components/Experience';
 
 const RootLayout = () => {
     return (
@@ -14,9 +16,11 @@ const RootLayout = () => {
             <main>
                 <Banner />
                 <About />
+                <Experienced/>
                 <Skills />
                 <Education />
                 <Projects/>
+                <Quotes/>
             </main>
         </div>
     );

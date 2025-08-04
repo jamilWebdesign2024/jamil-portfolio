@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaGithub, FaTwitter, FaLinkedin, FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
 import { FiArrowRight } from 'react-icons/fi';
+import Typewriter from 'typewriter-effect';
 
 const Banner = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section
       id="hero"
@@ -28,28 +35,49 @@ const Banner = () => {
               Available for new projects
             </div>
 
-            {/* Headline */}
+            {/* Headline with single line name */}
             <h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
               style={{ color: 'var(--heading-color)' }}
             >
-              <span className="block">Hello, I'm</span>
-              <span style={{ color: 'var(--accent-color)' }}>Sagar Sharma</span>
+              Hello, I'm <span style={{ color: 'var(--accent-color)' }}>Md. Jamil Uddin</span>
             </h1>
+
+            {/* Typewriter effect for titles */}
+            <div className="h-12 sm:h-16 mb-6 flex items-center justify-center lg:justify-start">
+              {isMounted && (
+                <Typewriter
+                  options={{
+                    strings: [
+                      'Full Stack Developer',
+                      'Problem Solver',
+                      'MERN Stack Specialist',
+                      'Tech Enthusiast'
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    deleteSpeed: 30,
+                    delay: 50,
+                    wrapperClassName: 'text-2xl sm:text-3xl font-semibold',
+                    cursorClassName: 'Typewriter__cursor text-accent'
+                  }}
+                />
+              )}
+            </div>
 
             {/* Subheading */}
             <p
               className="text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed"
               style={{ color: 'var(--text-color)' }}
             >
-              MERN Stack & Frontend Developer with 7+ years of experience building scalable web applications.
+              MERN Stack Developer with 1+ years of experience building scalable web applications.
               I specialize in creating efficient, responsive, and user-friendly interfaces.
             </p>
 
             {/* Skills highlights */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
               <div
-                className="flex items-center px-4 py-2 rounded-full shadow-sm"
+                className="flex items-center px-4 py-2 rounded-full shadow-sm transition-all hover:shadow-md"
                 style={{
                   backgroundColor: 'var(--secondary-bg)',
                   border: '1px solid var(--shadow-color)'
@@ -62,7 +90,7 @@ const Banner = () => {
                 <span className="text-sm font-medium">React.js</span>
               </div>
               <div
-                className="flex items-center px-4 py-2 rounded-full shadow-sm"
+                className="flex items-center px-4 py-2 rounded-full shadow-sm transition-all hover:shadow-md"
                 style={{
                   backgroundColor: 'var(--secondary-bg)',
                   border: '1px solid var(--shadow-color)'
@@ -75,7 +103,7 @@ const Banner = () => {
                 <span className="text-sm font-medium">Node.js</span>
               </div>
               <div
-                className="flex items-center px-4 py-2 rounded-full shadow-sm"
+                className="flex items-center px-4 py-2 rounded-full shadow-sm transition-all hover:shadow-md"
                 style={{
                   backgroundColor: 'var(--secondary-bg)',
                   border: '1px solid var(--shadow-color)'
@@ -128,10 +156,10 @@ const Banner = () => {
             </div>
           </div>
 
-          {/* Image section with enhanced gradient animation */}
+          {/* Image section */}
           <div className="relative w-full max-w-md lg:max-w-lg flex-shrink-0">
             <div className="relative w-72 h-72 lg:w-96 lg:h-96 mx-auto">
-              {/* Enhanced gradient animation */}
+              {/* Gradient animation */}
               <div
                 className="absolute inset-0 rounded-full animate-smooth-pulse bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-20 blur-xl"
                 style={{
@@ -139,7 +167,7 @@ const Banner = () => {
                 }}
               ></div>
 
-              {/* Profile image container */}
+              {/* Profile image */}
               <div
                 className="relative w-full h-full rounded-full overflow-hidden border-4 z-10"
                 style={{
@@ -155,12 +183,12 @@ const Banner = () => {
                 ></div>
                 <img
                   src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                  alt="Sagar Sharma"
+                  alt="Md. Jamil Uddin"
                   className="relative w-full h-full object-cover"
                 />
               </div>
 
-              {/* Enhanced Experience badge with gradient animation */}
+              {/* Experience badge */}
               <div
                 className="absolute -bottom-4 -right-4 p-3 rounded-xl shadow-lg flex items-center z-20 overflow-hidden group"
                 style={{
@@ -172,7 +200,7 @@ const Banner = () => {
                 <div
                   className="text-2xl font-bold mr-2 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
                 >
-                  7+
+                  1+
                 </div>
                 <div
                   className="text-sm font-medium"

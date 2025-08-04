@@ -259,13 +259,7 @@ const Projects = () => {
 
 export default Projects;
 
-// https://i.postimg.cc/fLRmvKSv/1677507599579-removebg-preview.png
-// https://i.postimg.cc/MHQ7cmLK/abdur-rakib.webp
-// Abdur Rakib is the Chief Operating Officer at Programming Hero and Phitron.io.
-// He leads strategic operations, helping thousands of students land global tech jobs.
-// With a strong tech background, he’s passionate about scalable and impactful education.
 
-// Jhankar Mahbub is a dynamic educator and coder who transitioned from engineering at BUET to software in the U.S., then founded Programming Hero, now one of Bangladesh’s top platforms for fun, effective coding education—alongside being a bestselling Bengali author and inspirational speaker.
 
 
 
