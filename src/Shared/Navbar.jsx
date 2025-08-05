@@ -2,18 +2,23 @@ import React, { useState } from 'react';
 import { AiOutlineMenu, AiOutlineClose, AiOutlineDownload } from 'react-icons/ai';
 import ThemeToggle from '../Pages/ThemeToggle';
 
-
 const Navbar = () => {
-  const [navOpen, setNavOpen] = useState(false); // মোবাইল মেনু স্টেট
+  const [navOpen, setNavOpen] = useState(false);
 
   const handleNavToggle = () => {
     setNavOpen(!navOpen);
   };
 
+  const handleDownloadCV = () => {
+    window.open('https://drive.google.com/file/d/1kiQal9j7P5KoYZsGKaQEyJ5TFfVcZwyv/view?usp=drive_link', '_blank');
+  };
+
   const navLinks = [
     { name: 'Home', href: '#' },
     { name: 'About', href: '#about' },
-    { name: 'Work', href: '#work' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Projects', href: '#projects' },
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -28,7 +33,7 @@ const Navbar = () => {
       }}
     >
       <div className="container mx-auto flex justify-between items-center">
-        {/* লোগো */}
+        {/* Logo */}
         <div
           className="text-xl font-bold flex items-center"
           style={{ color: 'var(--heading-color)' }}
@@ -38,7 +43,7 @@ const Navbar = () => {
           <span className="text-3xl" style={{ color: 'var(--accent-color)' }}>/&gt;</span>
         </div>
 
-        {/* ডেস্কটপ মেনু */}
+        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
             <a
@@ -53,25 +58,26 @@ const Navbar = () => {
             </a>
           ))}
 
-          {/* থিম সুইচ */}
+          {/* Theme Toggle */}
           <ThemeToggle />
 
-          {/* ডাউনলোড সিভি বাটন */}
+          {/* Download CV Button */}
           <button
-            className="font-semibold py-2 px-4 rounded-lg flex items-center space-x-2 transition duration-300 ease-in-out"
+            onClick={handleDownloadCV}
+            className="font-semibold py-2 px-4 rounded-lg cursor-pointer flex items-center space-x-2 transition duration-300 ease-in-out"
             style={{
               backgroundColor: 'var(--accent-color)',
               color: 'var(--link-hover)',
             }}
             onMouseEnter={(e) => e.target.style.backgroundColor = 'var(--accent-hover)'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--accent-color)'}
+
           >
             <AiOutlineDownload className="text-lg" />
             <span>Download CV</span>
           </button>
         </div>
 
-        {/* মোবাইল হ্যামবার্গার আইকন */}
+        {/* Mobile Hamburger Icon */}
         <div className="md:hidden flex items-center space-x-4">
           <ThemeToggle />
           <button onClick={handleNavToggle} className="text-2xl focus:outline-none" style={{ color: 'var(--text-color)' }} aria-label="Open menu">
@@ -80,7 +86,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* মোবাইল মেনু (সাইডবার) */}
+      {/* Mobile Menu (Sidebar) */}
       <div
         className={`md:hidden fixed top-0 left-0 w-3/4 h-full transition-transform duration-300 ease-in-out transform ${navOpen ? 'translate-x-0' : '-translate-x-full'} p-6 shadow-2xl`}
         style={{
@@ -99,7 +105,7 @@ const Navbar = () => {
             <li key={link.name}>
               <a
                 href={link.href}
-                onClick={() => setNavOpen(false)} // মেনু ক্লিক করলে বন্ধ হবে
+                onClick={() => setNavOpen(false)}
                 className="block transition duration-300 ease-in-out"
                 style={{ color: 'var(--link-color)' }}
                 onMouseEnter={(e) => e.target.style.color = 'var(--link-hover)'}
@@ -111,6 +117,7 @@ const Navbar = () => {
           ))}
           <li className="mt-8 pt-6 border-t" style={{ borderColor: 'var(--link-color)' }}>
             <button
+              onClick={handleDownloadCV}
               className="font-semibold py-3 px-6 rounded-lg w-full flex items-center justify-center space-x-2 transition duration-300 ease-in-out"
               style={{
                 backgroundColor: 'var(--accent-color)',
@@ -126,7 +133,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* মোবাইল মেনু খোলা থাকলে ওভারলে */}
+      {/* Overlay when mobile menu is open */}
       {navOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 md:hidden z-40"

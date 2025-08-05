@@ -93,7 +93,7 @@ const Contact = () => {
         >
           <h2
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
-            style={{ color: 'var(--heading-color)' }}
+            style={{ color: 'var(--accent-color)' }}
           >
             Let's Connect
           </h2>

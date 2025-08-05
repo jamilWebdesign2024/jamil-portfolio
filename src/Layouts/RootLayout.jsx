@@ -8,6 +8,7 @@ import Projects from '../Components/Projects';
 import Quotes from '../Components/Testiomonials';
 import Experienced from '../Components/Experience';
 import Contact from '../Components/Contact';
+import Footer from '../Shared/Footer';
 
 const RootLayout = () => {
     return (
@@ -17,13 +18,15 @@ const RootLayout = () => {
             <main>
                 <Banner />
                 <About />
-               <Skills />
-                <Experienced/>
+                <Skills />
+                <Experienced />
                 {/* <Education /> */}
-                <Projects/>
-                <Quotes/>
-                <Contact/>
+                <Projects />
+                <Quotes />
+                <Contact />
             </main>
+
+            <Footer />
         </div>
     );
 };
