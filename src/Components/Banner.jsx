@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaGithub, FaTwitter, FaLinkedin, FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
 import { FiArrowRight } from 'react-icons/fi';
 import Typewriter from 'typewriter-effect';
+import image from '../assets/photo.png'
 
 const Banner = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -182,7 +183,7 @@ const Banner = () => {
                   }}
                 ></div>
                 <img
-                  src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                  src={image}
                   alt="Md. Jamil Uddin"
                   className="relative w-full h-full object-cover"
                 />

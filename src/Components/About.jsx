@@ -1,228 +1,155 @@
-import React from "react";
-import { motion } from "framer-motion";
-import {
-  FiAward,
-  FiBook,
-  FiCode,
-  FiUser,
-  FiZap,
-  FiTarget,
-  FiFeather
-} from "react-icons/fi";
-import { FaReact, FaNodeJs } from "react-icons/fa";
-import { SiTailwindcss, SiMongodb, SiExpress } from "react-icons/si";
-import { RiFirebaseLine } from "react-icons/ri";
+import React from 'react';
+import photo from '../assets/photo.png';
+import { motion } from 'framer-motion';
+
+// Framer Motion variants for text content animation
+const textVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+// Framer Motion variants for list items
+const listVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
 
 const About = () => {
-  // Animation variants
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10
-      }
-    }
-  };
-
-  const techStack = [
-    { icon: <FaReact size={20} />, name: "React.js" },
-    { icon: <SiTailwindcss size={20} />, name: "Tailwind" },
-    { icon: <FaNodeJs size={20} />, name: "Node.js" },
-    { icon: <SiExpress size={20} />, name: "Express" },
-    { icon: <SiMongodb size={20} />, name: "MongoDB" },
-    { icon: <RiFirebaseLine size={20} />, name: "Firebase" },
-  ];
-
-  const education = [
-    {
-      icon: <FiBook size={16} />,
-      title: "MERN Stack Development",
-      institution: "Programming Hero",
-      period: "2023",
-      description: "Built 12+ production-ready applications with authentication and dashboard UIs."
-    },
-  ];
-  
-  const uniqueSkills = [
-    "Engineering logic meets creative design",
-    "Strong problem-solving skills",
-    "Experience with authentication systems",
-    "Quick learner in fast-paced environments"
-  ];
-
   return (
-    <section
-      id="about"
-      className="py-16 px-4 sm:px-6 lg:px-8 xl:px-12 relative"
-      style={{
-        backgroundColor: 'var(--primary-bg)',
-        color: 'var(--text-color)',
-        minHeight: 'auto'
-      }}
-    >
-      <div className="container mx-auto max-w-7xl">
-        <motion.div
-          initial={{ y: -30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="flex flex-col items-center mb-12"
-        >
-          <div className="flex items-center px-6 py-2 rounded-full mb-6 bg-[var(--secondary-bg)] text-[var(--accent-color)]">
-            <FiUser className="mr-2" />
-            <h2 className="text-xl font-semibold">ABOUT ME</h2>
-          </div>
-          
-          <div className="flex flex-col lg:flex-row gap-8 w-full">
-            {/* Profile Image - More compact */}
-            <motion.div
-              className="w-full lg:w-1/3 flex justify-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-xl overflow-hidden shadow-md border-2 border-[var(--accent-color)]">
+    <section id="about" className="py-16 md:py-24 overflow-hidden">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          {/* Image and Animated Border Section */}
+          <motion.div
+            className="w-full md:w-1/3 flex justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="skill-border p-2">
+              <div className="w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full">
                 <img
-                  src="https://placehold.co/600x600/1F2937/D1D5DB?text=MD+Nazmul+Hossan"
-                  alt="Profile"
-                  className="w-full h-full object-cover"
+                  src={photo}
+                  alt="A passionate self-proclaimed designer and web developer"
+                  className="object-cover w-full h-full"
                 />
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            {/* Content Column - Wider */}
-            <motion.div 
-              className="w-full lg:w-2/3"
-              variants={container}
+          {/* Text Content Section */}
+          <div className="w-full md:w-2/3 text-center md:text-left">
+            <motion.h2
+              className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.5 }}
+              variants={textVariants}
             >
-              {/* Compact Intro Card */}
-              <motion.div 
-                className="bg-[var(--secondary-bg)] rounded-xl p-6 mb-6"
-                variants={item}
-              >
-                <h3 className="text-2xl font-bold mb-4 text-[var(--heading-color)]">
-                  Electronics Engineer & Developer
-                </h3>
-                <div className="space-y-3 text-[var(--text-color)]">
-                  <p>
-                    I'm <span className="font-semibold text-[var(--accent-color)]">MD Nazmul Hossan</span>, pursuing Diploma in Electronics Engineering while developing web development skills.
-                  </p>
-                  <p>
-                    Combining hardware knowledge with software expertise to build innovative solutions.
-                  </p>
-                </div>
-              </motion.div>
+              Curious about me? Here you have it:
+            </motion.h2>
 
-              {/* Compact Two Column Layout */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                {/* Education */}
-                <motion.div
-                  className="bg-[var(--secondary-bg)] rounded-xl p-6"
-                  variants={item}
-                >
-                  <div className="flex items-start mb-4">
-                    <FiAward className="text-xl text-[var(--accent-color)] mr-3 mt-1" />
-                    <div>
-                      <h4 className="text-lg font-semibold text-[var(--heading-color)]">
-                        {education[0].title}
-                      </h4>
-                      <p className="text-sm text-[var(--text-color)] opacity-80">{education[0].institution} • {education[0].period}</p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-[var(--text-color)] opacity-90">{education[0].description}</p>
-                </motion.div>
+            <motion.p
+              className="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={textVariants}
+              transition={{ delay: 0.2 }}
+            >
+              I'm a passionate, <strong className="text-blue-500 dark:text-blue-400">self-proclaimed designer</strong> who specializes in full stack development (React.js & Node.js). I am very enthusiastic about bringing the technical and visual aspects of digital products to life. User experience, pixel perfect design, and writing clear, readable, highly performant code matters to me.
+            </motion.p>
 
-                {/* Tech Stack - More compact */}
-                <motion.div
-                  className="bg-[var(--secondary-bg)] rounded-xl p-6"
-                  variants={item}
-                >
-                  <h4 className="text-lg font-semibold mb-4 flex items-center text-[var(--heading-color)]">
-                    <FiCode className="text-xl text-[var(--accent-color)] mr-2" /> Skills
-                  </h4>
-                  <div className="grid grid-cols-3 gap-3">
-                    {techStack.map((tech, index) => (
-                      <motion.div
-                        key={index}
-                        className="flex flex-col items-center p-2 rounded-lg bg-[var(--primary-bg)]"
-                        whileHover={{ 
-                          y: -3,
-                          backgroundColor: 'var(--accent-bg)',
-                          color: 'var(--accent-color)'
-                        }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <div className="text-xl mb-1" style={{ color: 'var(--accent-color)' }}>
-                          {tech.icon}
-                        </div>
-                        <span className="text-xs">{tech.name}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
+            <motion.p
+              className="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={textVariants}
+              transition={{ delay: 0.4 }}
+            >
+              I began my journey as a web developer in 2015, and since then, I've continued to grow and evolve as a developer, taking on new challenges and learning the latest technologies along the way. Now, in my early thirties, 7 years after starting my web development journey, I'm building cutting-edge web applications using modern technologies such as Next.js, TypeScript, Nestjs, Tailwindcss, Supabase and much more.
+            </motion.p>
 
-              {/* Compact Unique Skills */}
-              <motion.div 
-                className="bg-[var(--secondary-bg)] rounded-xl p-6 mb-6"
-                variants={item}
-              >
-                <h4 className="text-lg font-semibold mb-4 flex items-center text-[var(--heading-color)]">
-                  <FiZap className="text-xl text-[var(--accent-color)] mr-2" /> My Strengths
-                </h4>
-                <ul className="space-y-3 text-sm text-[var(--text-color)]">
-                  {uniqueSkills.map((skill, index) => (
-                    <motion.li 
-                      key={index} 
-                      className="flex items-start"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <span className="h-2 w-2 rounded-full mt-2 mr-3 bg-[var(--accent-color)]"></span>
-                      {skill}
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
+            <motion.p
+              className="mb-6 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={textVariants}
+              transition={{ delay: 0.6 }}
+            >
+              I am very much a progressive thinker and enjoy working on products end to end, from ideation all the way to development.
+            </motion.p>
 
-              {/* Compact Career Goal */}
-              <motion.div 
-                className="bg-[var(--secondary-bg)] rounded-xl p-6 text-center"
-                variants={item}
-              >
-                <h4 className="text-lg font-semibold mb-3 flex items-center justify-center text-[var(--heading-color)]">
-                  <FiTarget className="text-xl text-[var(--accent-color)] mr-2" /> Career Goal
-                </h4>
-                <p className="text-sm text-[var(--text-color)] mb-3">
-                  Seeking <span className="font-semibold text-[var(--accent-color)]">internships</span> to apply my electronics and development skills.
-                </p>
-                <p className="text-xs italic text-[var(--text-color)] opacity-80">
-                  "Bridging hardware and software worlds"
-                </p>
-              </motion.div>
-            </motion.div>
+            <motion.p
+              className="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={textVariants}
+              transition={{ delay: 0.8 }}
+            >
+              When I'm not in full-on developer mode, you can find me hovering around on twitter or on indie hacker, witnessing the journey of early startups or enjoying some free time. You can follow me on <a href="https://twitter.com/your-twitter" target="_blank" rel="noopener noreferrer" className="text-blue-500 dark:text-blue-400 hover:underline">Twitter</a> where I share tech-related bites and build in public, or you can follow me on <a href="https://github.com/your-github" target="_blank" rel="noopener noreferrer" className="text-blue-500 dark:text-blue-400 hover:underline">GitHub</a>.
+            </motion.p>
+
+            <motion.h3
+              className="text-xl font-bold mb-4 mt-6 text-gray-900 dark:text-white"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={textVariants}
+              transition={{ delay: 1.0 }}
+            >
+              Finally, some quick bits about me.
+            </motion.h3>
+
+            <motion.ul
+              className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.2,
+                  },
+                },
+              }}
+            >
+              <motion.li variants={listVariants} className="flex items-center text-lg"><span className="mr-2">🎓</span> B.E. in Computer Engineering</motion.li>
+              <motion.li variants={listVariants} className="flex items-center text-lg"><span className="mr-2">👨‍💻</span> Full time freelancer</motion.li>
+              <motion.li variants={listVariants} className="flex items-center text-lg"><span className="mr-2">💡</span> Avid learner</motion.li>
+              <motion.li variants={listVariants} className="flex items-center text-lg"><span className="mr-2">🚀</span> Aspiring indie hacker</motion.li>
+            </motion.ul>
+
+            <motion.p
+              className="mt-8 text-lg text-gray-700 dark:text-gray-300"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={textVariants}
+              transition={{ delay: 1.4 }}
+            >
+              One last thing, I'm available for freelance work, so feel free to reach out and say hello! I promise I don't bite 😉
+            </motion.p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
