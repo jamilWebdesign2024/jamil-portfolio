@@ -26,6 +26,7 @@
   /* Dark Theme Colors */
   --primary-bg: #111827;
   --secondary-bg: #1F2937;
+  --secondary2-bg: #5d84bc;
   --navbar-bg: #1A1C20;
   --text-color: #D1D5DB;
   --heading-color: #FFFFFF;
@@ -35,27 +36,6 @@
   --link-hover: #FFFFFF;
   --shadow-color: #1F2937;
   --accent-color-rgb: 37, 99, 235;
-}
-
-
-
-/* Add this to your global CSS */
-.skill-border {
-  position: relative;
-  background: var(--secondary-bg);
-  border-radius: 0.5rem;
-}
-
-.skill-border::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(to right, var(--accent-color), purple);
-  border-radius: 0.6rem;
-  z-index: -1;
 }
 
 /*
@@ -109,7 +89,6 @@ body {
   animation: pulseLight 4s ease-in-out infinite;
 }
 
-
 /* Enhanced gradient animations */
 @keyframes smooth-pulse {
   0%, 100% {
@@ -129,4 +108,173 @@ body {
 /* Experience badge gradient effect */
 .group:hover .group-hover\:opacity-100 {
   opacity: 1;
+}
+
+/* About Section Styles */
+.bg-secondary-bg {
+  background-color: var(--secondary-bg);
+}
+
+.dark .bg-dark-secondary-bg {
+  background-color: var(--secondary-bg);
+}
+
+.text-heading-color {
+  color: var(--heading-color);
+}
+
+.dark .text-dark-heading-color {
+  color: var(--heading-color);
+}
+
+.text-text-color {
+  color: var(--text-color);
+}
+
+.dark .text-dark-text-color {
+  color: var(--text-color);
+}
+
+.text-accent-color {
+  color: var(--accent-color);
+}
+
+.dark .text-dark-accent-color {
+  color: var(--accent-color);
+}
+
+.bg-primary-bg {
+  background-color: var(--primary-bg);
+}
+
+.dark .bg-dark-primary-bg {
+  background-color: var(--primary-bg);
+}
+
+/* Enhanced skill border */
+.skill-border {
+  position: relative;
+  background: var(--secondary-bg);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.skill-border:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.skill-border::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--accent-color), #8B5CF6);
+  border-radius: 0.875rem;
+  z-index: -1;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.skill-border:hover::before {
+  opacity: 1;
+  transform: translateY(2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .skill-border {
+    max-width: 100%;
+  }
+  
+  .skill-border::before {
+    border-radius: 0.75rem;
+  }
+}
+
+/* Smooth section transitions */
+section {
+  scroll-margin-top: 2rem;
+}
+
+/* Link hover effects */
+a {
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* List item enhancements */
+li {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+li:hover {
+  transform: translateX(4px);
+}
+
+
+
+
+/* Custom styles for Skills section */
+
+/* Skill Card Enhancements */
+.skill-card {
+  position: relative;
+  background-color: var(--secondary-bg);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 1rem; /* rounded-xl */
+  background: linear-gradient(45deg, var(--accent-color), #8B5CF6, #FF69B4);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: scale(0.95);
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.skill-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px -5px rgba(var(--accent-color-rgb), 0.3);
+}
+
+/* Ensure skill icons are centered and look good */
+.skill-card > div {
+  width: 64px;
+  height: 64px;
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover > div {
+  transform: scale(1.1);
+}
+
+
+/* Swiper Pagination Styles */
+.swiper-pagination-bullet {
+  background: var(--shadow-color);
+  opacity: 1;
+  transition: background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--accent-color);
 }

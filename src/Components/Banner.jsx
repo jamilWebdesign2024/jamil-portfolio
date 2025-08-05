@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaGithub, FaTwitter, FaLinkedin, FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
 import { FiArrowRight } from 'react-icons/fi';
 import Typewriter from 'typewriter-effect';
-import image from '../assets/photo.png'
+import image from '../assets/photo.png';
 
 const Banner = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -14,14 +14,13 @@ const Banner = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 md:py-8"
+      className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 pb-36"
       style={{ backgroundColor: 'var(--primary-bg)' }}
     >
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 xl:gap-24">
           {/* Text content */}
           <div className="flex-1 text-center lg:text-left">
-            {/* Availability badge */}
             <div
               className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6"
               style={{
@@ -36,7 +35,6 @@ const Banner = () => {
               Available for new projects
             </div>
 
-            {/* Headline with single line name */}
             <h1
               className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
               style={{ color: 'var(--heading-color)' }}
@@ -44,7 +42,6 @@ const Banner = () => {
               Hello, I'm <span style={{ color: 'var(--accent-color)' }}>Md. Jamil Uddin</span>
             </h1>
 
-            {/* Typewriter effect for titles */}
             <div className="h-12 sm:h-16 mb-6 flex items-center justify-center lg:justify-start">
               {isMounted && (
                 <Typewriter
@@ -66,7 +63,6 @@ const Banner = () => {
               )}
             </div>
 
-            {/* Subheading */}
             <p
               className="text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed"
               style={{ color: 'var(--text-color)' }}
@@ -75,50 +71,22 @@ const Banner = () => {
               I specialize in creating efficient, responsive, and user-friendly interfaces.
             </p>
 
-            {/* Skills highlights */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
-              <div
-                className="flex items-center px-4 py-2 rounded-full shadow-sm transition-all hover:shadow-md"
-                style={{
-                  backgroundColor: 'var(--secondary-bg)',
-                  border: '1px solid var(--shadow-color)'
-                }}
-              >
-                <FaReact
-                  className="text-lg mr-2"
-                  style={{ color: 'var(--accent-color)' }}
-                />
-                <span className="text-sm font-medium">React.js</span>
-              </div>
-              <div
-                className="flex items-center px-4 py-2 rounded-full shadow-sm transition-all hover:shadow-md"
-                style={{
-                  backgroundColor: 'var(--secondary-bg)',
-                  border: '1px solid var(--shadow-color)'
-                }}
-              >
-                <FaNodeJs
-                  className="text-lg mr-2"
-                  style={{ color: 'var(--accent-color)' }}
-                />
-                <span className="text-sm font-medium">Node.js</span>
-              </div>
-              <div
-                className="flex items-center px-4 py-2 rounded-full shadow-sm transition-all hover:shadow-md"
-                style={{
-                  backgroundColor: 'var(--secondary-bg)',
-                  border: '1px solid var(--shadow-color)'
-                }}
-              >
-                <FaDatabase
-                  className="text-lg mr-2"
-                  style={{ color: 'var(--accent-color)' }}
-                />
-                <span className="text-sm font-medium">MongoDB</span>
-              </div>
+              {[['React.js', FaReact], ['Node.js', FaNodeJs], ['MongoDB', FaDatabase]].map(([name, Icon], i) => (
+                <div
+                  key={i}
+                  className="flex items-center px-4 py-2 rounded-full shadow-sm transition-all hover:shadow-md"
+                  style={{
+                    backgroundColor: 'var(--secondary-bg)',
+                    border: '1px solid var(--shadow-color)'
+                  }}
+                >
+                  <Icon className="text-lg mr-2" style={{ color: 'var(--accent-color)' }} />
+                  <span className="text-sm font-medium">{name}</span>
+                </div>
+              ))}
             </div>
 
-            {/* CTA and social */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <a
                 href="#contact"
@@ -132,27 +100,9 @@ const Banner = () => {
               </a>
 
               <div className="flex items-center space-x-4">
-                <a
-                  href="#"
-                  className="transition-colors duration-300 hover:text-[var(--accent-color)]"
-                  style={{ color: 'var(--link-color)' }}
-                >
-                  <FaGithub className="text-xl" />
-                </a>
-                <a
-                  href="#"
-                  className="transition-colors duration-300 hover:text-[var(--accent-color)]"
-                  style={{ color: 'var(--link-color)' }}
-                >
-                  <FaTwitter className="text-xl" />
-                </a>
-                <a
-                  href="#"
-                  className="transition-colors duration-300 hover:text-[var(--accent-color)]"
-                  style={{ color: 'var(--link-color)' }}
-                >
-                  <FaLinkedin className="text-xl" />
-                </a>
+                <a href="#" className="hover:text-[var(--accent-color)]" style={{ color: 'var(--link-color)' }}><FaGithub className="text-xl" /></a>
+                <a href="#" className="hover:text-[var(--accent-color)]" style={{ color: 'var(--link-color)' }}><FaTwitter className="text-xl" /></a>
+                <a href="#" className="hover:text-[var(--accent-color)]" style={{ color: 'var(--link-color)' }}><FaLinkedin className="text-xl" /></a>
               </div>
             </div>
           </div>
@@ -160,15 +110,13 @@ const Banner = () => {
           {/* Image section */}
           <div className="relative w-full max-w-md lg:max-w-lg flex-shrink-0">
             <div className="relative w-72 h-72 lg:w-96 lg:h-96 mx-auto">
-              {/* Gradient animation */}
               <div
-                className="absolute inset-0 rounded-full animate-smooth-pulse bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-20 blur-xl"
+                className="absolute inset-0 rounded-full animate-smooth-pulse bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-20 blur-xl z-0"
                 style={{
                   mask: 'radial-gradient(transparent 60%, black 75%)'
                 }}
               ></div>
 
-              {/* Profile image */}
               <div
                 className="relative w-full h-full rounded-full overflow-hidden border-4 z-10"
                 style={{
@@ -182,14 +130,9 @@ const Banner = () => {
                     background: 'linear-gradient(to bottom right, rgba(var(--accent-color-rgb), 0.1), transparent)'
                   }}
                 ></div>
-                <img
-                  src={image}
-                  alt="Md. Jamil Uddin"
-                  className="relative w-full h-full object-cover"
-                />
+                <img src={image} alt="Md. Jamil Uddin" className="relative w-full h-full object-cover" />
               </div>
 
-              {/* Experience badge */}
               <div
                 className="absolute -bottom-4 -right-4 p-3 rounded-xl shadow-lg flex items-center z-20 overflow-hidden group"
                 style={{
@@ -198,17 +141,8 @@ const Banner = () => {
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div
-                  className="text-2xl font-bold mr-2 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent"
-                >
-                  1+
-                </div>
-                <div
-                  className="text-sm font-medium"
-                  style={{ color: 'var(--text-color)' }}
-                >
-                  Years Experience
-                </div>
+                <div className="text-2xl font-bold mr-2 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">1+</div>
+                <div className="text-sm font-medium" style={{ color: 'var(--text-color)' }}>Years Experience</div>
               </div>
             </div>
           </div>

@@ -1,153 +1,101 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/grid';
+import { Autoplay, Grid } from 'swiper/modules';
+import { motion } from 'framer-motion';
 import {
-  FaJs,
-  FaReact,
-  FaNodeJs,
-  FaHtml5,
-  FaCss3Alt,
-  FaFigma,
-  FaGitAlt,
-} from "react-icons/fa";
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaGithub,
+  FaFigma, FaRegChartBar
+} from 'react-icons/fa';
 import {
-  SiExpress,
-  SiTailwindcss,
-  SiAdobephotoshop,
-  SiAdobeillustrator,
-  SiRefinedgithub,
-} from "react-icons/si";
-import { TbChartAreaLine } from "react-icons/tb";
+  SiTailwindcss, SiVite, SiDaisyui, SiShadcnui, SiAxios,
+  SiExpress, SiMongodb, SiNixos
+} from 'react-icons/si';
+import { MdDesignServices } from "react-icons/md";
+import { RiNextjsFill } from 'react-icons/ri';
+import { VscVscode } from 'react-icons/vsc';
+
+const skills = [
+  { name: "HTML5", icon: <FaHtml5 className="text-[#e44d26]" /> },
+  { name: "CSS3", icon: <FaCss3Alt className="text-[#264de4]" /> },
+  { name: "JavaScript", icon: <FaJs className="text-[#f0db4f]" /> },
+  { name: "React", icon: <FaReact className="text-[#61dafb]" /> },
+  { name: "Next.js", icon: <RiNextjsFill className="text-white" /> },
+  { name: "Node.js", icon: <FaNodeJs className="text-[#3C873A]" /> },
+  { name: "Express.js", icon: <SiExpress className="text-white" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06B6D4]" /> },
+  { name: "DaisyUI", icon: <SiDaisyui className="text-[#FBBF24]" /> },
+  { name: "Shadcn", icon: <SiShadcnui className="text-white" /> },
+  { name: "MambaUI", icon: <MdDesignServices className="text-[#3B82F6]" /> },
+  { name: "Axios", icon: <SiAxios className="text-[#5A29E4]" /> },
+  { name: "Charts", icon: <FaRegChartBar className="text-[#4ade80]" /> },
+  { name: "Figma", icon: <FaFigma className="text-[#F24E1E]" /> },
+  { name: "Pixo", icon: <SiNixos className="text-[#FF0000]" /> },
+  { name: "VS Code", icon: <VscVscode className="text-[#007ACC]" /> },
+  { name: "Vite", icon: <SiVite className="text-[#646CFF]" /> },
+  { name: "Git", icon: <FaGitAlt className="text-[#F05032]" /> },
+  { name: "Github", icon: <FaGithub className="text-white" /> },
+  { name: "Mongodb", icon: <SiMongodb className="text-white" /> },
+];
+
+const skillVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.9 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
+};
 
 const Skills = () => {
-  const skills = [
-    { name: "HTML5", icon: <FaHtml5 className="text-orange-500" /> },
-    { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" /> },
-    { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
-    { name: "React", icon: <FaReact className="text-cyan-500" /> },
-    { name: "Node.js", icon: <FaNodeJs className="text-green-600" /> },
-    { name: "Express.js", icon: <SiExpress className="text-gray-500" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> },
-    { name: "DaisyUI", icon: <div className="text-purple-500">DaisyUI</div> },
-    { name: "Shadcn", icon: <div className="text-black dark:text-white">UI</div> },
-    { name: "MembaUI", icon: <div className="text-blue-600">UI</div> },
-    { name: "Axios", icon: <div className="text-purple-600">Axios</div> },
-    { name: "TanStack Query", icon: <div className="text-red-500">RQ</div> },
-    { name: "Charts", icon: <TbChartAreaLine className="text-green-500" /> },
-    { name: "Figma", icon: <FaFigma className="text-purple-500" /> },
-    { name: "Pixo", icon: <div className="text-blue-500">Px</div> },
-    { name: "VS Code", icon: <div className="text-blue-500">VS</div> },
-    { name: "Vite", icon: <div className="text-yellow-500">Vite</div> },
-    { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
-    { name: "Github", icon: <SiRefinedgithub  className="text-orange-600" /> },
-    { name: "Photoshop", icon: <SiAdobephotoshop className="text-blue-800" /> },
-    { name: "Illustrator", icon: <SiAdobeillustrator className="text-orange-600" /> },
-    { name: "PDF", icon: <div className="text-red-500">PDF</div> },
-  ];
-
   return (
-    <section id="skills" className="py-16 px-4 sm:px-8 lg:px-16 bg-[var(--primary-bg)]">
-      <div className="container mx-auto max-w-7xl">
-        <div className="flex flex-col items-center mb-16 text-center">
-          <motion.div
-            className="px-6 py-2 rounded-full mb-4 bg-gradient-to-r from-[var(--accent-color)] to-blue-400"
-            whileHover={{ scale: 1.05 }}
+    <section id="skills" className="py-20 md:py-28 lg:py-32 dark:bg-black/80">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-accent-color underline"
           >
-            <span className="text-sm font-semibold uppercase text-white ">
-              Technical Skills
-            </span>
-          </motion.div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--heading-color)]">
-            My Professional Toolkit
+            Skills
           </h2>
+          <p className='mt-3'>Technologies I've mastered through hands-on projects</p>
         </div>
 
-        {/* Dual Marquee Container */}
-        <div className="space-y-8">
-          {/* Top Marquee (left to right) */}
-          <div className="overflow-hidden">
-            <motion.div
-              className="flex gap-6 w-max"
-              animate={{
-                x: ["0%", "-100%"],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 40,
-                  ease: "linear",
-                },
-              }}
-            >
-              {[...skills, ...skills].map((skill, index) => (
-                <div key={`top-${index}`} className="skill-border mx-2">
-                  <motion.div
-                    className="flex flex-col items-center justify-center p-4 min-w-[100px] h-[100px]"
-                    whileHover={{ 
-                      scale: 1.05,
-                      boxShadow: "0 0 15px rgba(var(--accent-color-rgb), 0.3)"
-                    }}
-                  >
-                    <div className="text-3xl mb-2">{skill.icon}</div>
-                    <span className="text-xs font-medium">{skill.name}</span>
-                  </motion.div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Bottom Marquee (right to left) */}
-          <div className="overflow-hidden">
-            <motion.div
-              className="flex gap-6 w-max"
-              animate={{
-                x: ["-100%", "0%"],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 40,
-                  ease: "linear",
-                },
-              }}
-            >
-              {[...skills].reverse().map((skill, index) => (
-                <div key={`bottom-${index}`} className="skill-border mx-2">
-                  <motion.div
-                    className="flex flex-col items-center justify-center p-4 min-w-[100px] h-[100px]"
-                    whileHover={{ 
-                      scale: 1.05,
-                      boxShadow: "0 0 15px rgba(var(--accent-color-rgb), 0.3)"
-                    }}
-                  >
-                    <div className="text-3xl mb-2">{skill.icon}</div>
-                    <span className="text-xs font-medium">{skill.name}</span>
-                  </motion.div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Mobile Grid */}
-        <div className="mt-12 md:hidden grid grid-cols-3 sm:grid-cols-4 gap-4">
+        <Swiper
+          modules={[Autoplay, Grid]}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          speed={500}
+          grid={{ rows: 2, fill: 'row' }}
+          breakpoints={{
+            320: { slidesPerView: 2, spaceBetween: 10 },
+            640: { slidesPerView: 3, spaceBetween: 20 },
+            768: { slidesPerView: 4, spaceBetween: 30 },
+            1024: { slidesPerView: 6, spaceBetween: 40 },
+          }}
+          loop={true}
+        >
           {skills.map((skill, index) => (
-            <div key={`mobile-${index}`} className="skill-border">
+            <SwiperSlide key={index}>
               <motion.div
-                className="flex flex-col items-center p-4"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                viewport={{ once: true }}
+                className="p-4 skill-card text-center flex flex-col items-center justify-center rounded-xl"
+                variants={skillVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
               >
-                <div className="text-2xl mb-1">{skill.icon}</div>
-                <span className="text-xs text-center">{skill.name}</span>
+                <div
+                  className="text-4xl md:text-5xl w-16 h-16 flex items-center justify-center rounded-lg mb-3"
+                  style={{
+                    backgroundColor: 'var(--primary-bg)',
+                    border: '1px solid var(--shadow-color)',
+                    color: 'var(--heading-color)',
+                  }}
+                >
+                  {skill.icon}
+                </div>
+                <span className="text-sm md:text-base font-medium" style={{ color: 'var(--accent-color)' }}>
+                  {skill.name}
+                </span>
               </motion.div>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </section>
   );
