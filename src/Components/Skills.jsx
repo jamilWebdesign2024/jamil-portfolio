@@ -24,7 +24,6 @@ const skills = [
   { name: "CSS3", icon: <FaCss3Alt className="text-blue-600" />, category: "frontend" },
   { name: "JavaScript", icon: <DiJavascript className="text-yellow-400" />, category: "frontend" },
   { name: "React.js", icon: <FaReact className="text-cyan-500" />, category: "frontend" },
-  { name: "Next.js", icon: <SiVercel className="text-black" />, category: "frontend" },
   { name: "Tailwind CSS", icon: <RiTailwindCssFill className="text-teal-400" />, category: "frontend" },
   { name: "React Query", icon: <SiReactquery className="text-red-600" />, category: "frontend" },
   { name: "React Router", icon: <SiReactrouter className="text-pink-700" />, category: "frontend" },
