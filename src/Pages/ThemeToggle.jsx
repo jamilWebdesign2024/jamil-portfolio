@@ -1,46 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { AiOutlineMoon, AiOutlineSun } from 'react-icons/ai';
+import React, { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
-  // localStorage থেকে থিমের বর্তমান অবস্থা লোড করা হচ্ছে
-  const [darkMode, setDarkMode] = useState(
-    () => localStorage.getItem('theme') === 'dark'
-  );
+  const [theme, setTheme] = useState(() => {
+    // Read theme from localStorage on first render
+    return localStorage.getItem("theme") || "light";
+  });
 
-  // থিম পরিবর্তন হলে HTML এলিমেন্টে 'dark' ক্লাস যোগ বা সরানো এবং localStorage আপডেট করা
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode]);
+    // Update data-theme attribute
+    document.documentElement.setAttribute("data-theme", theme);
+    // Save theme to localStorage
+    localStorage.setItem("theme", theme);
 
-  // থিম টগল করার ফাংশন
-  const handleThemeToggle = () => {
-    setDarkMode(!darkMode);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
   };
 
   return (
     <button
-      onClick={handleThemeToggle}
-      className="p-2 rounded-full transition duration-300 ease-in-out focus:outline-none"
-      style={{
-        color: 'var(--link-color)',
-        backgroundColor: 'transparent',
-        '--tw-bg-opacity': '0',
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'var(--secondary-bg)')}
-      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
-      aria-label="Toggle dark mode"
+      onClick={toggleTheme}
+      className="btn rounded-full w-10 h-10 btn-outline border-accent text-primary bg-transparent hover:bg-black/20"
+      aria-label="Toggle Theme"
     >
-      {darkMode ? (
-        <AiOutlineSun className="text-xl" style={{ color: 'var(--link-color)' }} />
-      ) : (
-        <AiOutlineMoon className="text-xl" style={{ color: 'var(--link-color)' }} />
-      )}
+      {theme === "light" ? "🌙" : "☀️"}
     </button>
   );
 };
