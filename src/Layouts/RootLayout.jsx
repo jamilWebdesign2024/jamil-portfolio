@@ -5,7 +5,6 @@ import About from '../Components/About';
 import Skills from '../Components/Skills';
 import Education from '../Components/Education';
 import Projects from '../Components/Projects';
-import Quotes from '../Components/Testiomonials';
 import Contact from '../Components/Contact';
 import Footer from '../Shared/Footer';
 
@@ -18,10 +17,8 @@ const RootLayout = () => {
                 <Banner />
                 <About />
                 <Skills />
-
                 <Education />
                 <Projects />
-                <Quotes />
                 <Contact />
             </main>
 

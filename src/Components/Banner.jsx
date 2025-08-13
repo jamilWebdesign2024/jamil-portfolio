@@ -13,7 +13,7 @@ const Banner = () => {
 
   return (
     <section
-      id="hero"
+      id="banner"
       className="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 pb-36
         bg-base-300 text-base-content"
     >

@@ -3,23 +3,16 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 // Importing icons from react-icons
-
 import { FaDatabase, FaNodeJs, FaReact } from 'react-icons/fa';
 import { SiExpress, SiFirebase, SiMongodb } from 'react-icons/si';
 import { RiTailwindCssFill } from 'react-icons/ri';
 import { AiFillCreditCard } from 'react-icons/ai';
 import { FiCode, FiExternalLink, FiEye, FiGithub, FiShieldOff, FiTarget, FiTrendingUp, FiX } from 'react-icons/fi';
 
-
 const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
-
-  useEffect(() => {
-    // Default theme set once, can be 'dark' or 'light'
-    document.documentElement.setAttribute('data-theme', 'dark');
-  }, []);
 
   useEffect(() => {
     if (inView) {
@@ -62,7 +55,7 @@ const ProjectsSection = () => {
       description: 'Fitness club management system with class schedules, trainer profiles, and membership processing.',
       liveLink: 'https://athletic-club-c3623.web.app',
       githubLink: 'https://github.com/jamilWebdesign2024/athletic-club',
-      image: 'https://i.postimg.cc/kgMtFDdN/Screenshot-6.jpg',
+      image: 'https://i.postimg.cc/NM0hqrhs/Screenshot-2.jpg',
       tags: ['React', 'Firebase', 'Node.js', 'MongoDB', 'Tailwind'],
       icons: [<FaReact />, <SiFirebase />, <FaNodeJs />, <SiMongodb />, <RiTailwindCssFill />],
       detailedDescription: 'Athletic Club is a modern fitness management system that streamlines gym operations. It features comprehensive member management, class scheduling system, trainer profile management, and automated membership processing with real-time notifications.',
@@ -136,7 +129,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-base-100" data-theme="dark">
+    <div className="min-h-screen bg-base-100">
       <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -183,7 +176,7 @@ const ProjectsSection = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute top-4 right-4">
-                      <div className="badge badge-primary badge-sm font-semibold">
+                      <div className="badge bg-accent/50 badge-sm font-semibold">
                         {project.category}
                       </div>
                     </div>
@@ -249,7 +242,7 @@ const ProjectsSection = () => {
                       </div>
 
                       <button
-                        className="btn btn-sm btn-accent"
+                        className="btn bg-gradient-to-r from-primary to-secondary text-white border-0"
                         onClick={() => setSelectedProject(project)}
                       >
                         <FiEye /> View Details
@@ -323,7 +316,7 @@ const ProjectsSection = () => {
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.tags.map((tag, index) => (
-                      <div key={index} className="badge badge-primary badge-md">
+                      <div key={index} className="badge bg-accent/50 badge-md">
                         {tag}
                       </div>
                     ))}
@@ -348,7 +341,7 @@ const ProjectsSection = () => {
                       href={selectedProject.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-primary btn-sm"
+                      className="btn bg-gradient-to-r from-primary to-secondary text-white border-0 btn-sm"
                     >
                       <FiExternalLink /> Live Project
                     </a>
@@ -356,7 +349,7 @@ const ProjectsSection = () => {
                       href={selectedProject.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-secondary btn-sm"
+                      className="btn bg-gradient-to-r from-primary to-secondary text-white border-0 btn-sm"
                     >
                       <FiGithub /> GitHub Repository
                     </a>
@@ -406,7 +399,7 @@ const ProjectsSection = () => {
             {/* Modal Actions */}
             <div className="modal-action">
               <button
-                className="btn btn-primary"
+                className="btn bg-gradient-to-r from-primary to-secondary text-white border-0"
                 onClick={() => setSelectedProject(null)}
               >
                 Close Details
