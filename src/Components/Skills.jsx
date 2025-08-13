@@ -73,7 +73,7 @@ const SkillsSection = () => {
   const categories = ["frontend", "backend", "tools"].filter((cat) => groupedSkills[cat]);
 
   return (
-    <div className="min-h-screen bg-base-300 py-20 px-4 sm:px-6 lg:px-8">
+    <div id="skills" className="min-h-screen bg-base-300 py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">

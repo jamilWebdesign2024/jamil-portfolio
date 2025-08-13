@@ -56,7 +56,7 @@ const Education = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-16 px-4 bg-base-200">
+        <section id="education" ref={sectionRef} className="py-16 px-4 bg-base-200">
             <div className="max-w-5xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">

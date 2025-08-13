@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaGithub, FaLinkedin, FaTwitter, FaFacebook } from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -27,118 +27,163 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-20 bg-base-300">
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="contact" className="py-16 bg-base-200">
+      <div className="max-w-6xl mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-pulse">Get In Touch</h2>
-          <p className="mt-2 text-base-content/70">
-            Have a project in mind or want to collaborate? Feel free to reach out.
+          <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-pulse">
+            Get In <span className="text-accent">Touch</span>
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-base-content/80 max-w-2xl mx-auto">
+            Have a project in mind or just want to connect? Feel free to reach out to me for collaborations or questions.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Info */}
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-bold">Let's Build Your Business Together</h3>
-              <p className="mt-2 text-base-content/70">
-                I’m always open to new ideas, collaborations, and exciting projects. Whether you have a clear plan or just a spark of an idea, let’s connect and turn it into something impactful!
-              </p>
-            </div>
+          <div className="card shadow-lg max-w-lg md:max-w-xl mx-auto w-full rounded-3xl overflow-hidden bg-accent/2">
+            {/* Gradient Header */}
 
-            <div className="space-y-4">
-              {/* Address */}
-              <div className="flex items-center gap-4 p-4 rounded-lg bg-base-100 shadow">
-                <div className="p-3 rounded-lg bg-primary text-primary-content">
-                  <FaMapMarkerAlt size={20} />
+            {/* Inner Card Content */}
+
+            <div className="space-y-6 p-6">
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold mb-4">Contact Information</h3>
+                <p className="text-base-content/80 text-sm sm:text-base">
+                  Feel free to reach out for opportunities, collaborations, or just to say hi! I'm always open to discussing new projects and ideas.
+                </p>
+              </div>
+
+              <div className="space-y-5">
+                {/* Email */}
+                <div className="flex items-start gap-4 bg-accent/3 p-4 rounded-xl">
+                  <div className="mt-1 text-primary">
+                    <FaEnvelope size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Email</h4>
+                    <p className="text-base-content/80 text-sm sm:text-base">
+                      jamiluddinjishan@gmail.com
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold">Address</h4>
-                  <p>Pahartali, Chattogram, Bangladesh</p>
+
+                {/* Phone */}
+                <div className="flex items-start gap-4 bg-accent/3 p-4 rounded-xl">
+                  <div className="mt-1 text-primary">
+                    <FaPhone size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Phone</h4>
+                    <p className="text-base-content/80 text-sm sm:text-base">
+                      +8801878 142110
+                    </p>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-start gap-4 bg-accent/3 p-4 rounded-xl">
+                  <div className="mt-1 text-primary">
+                    <FaMapMarkerAlt size={20} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Location</h4>
+                    <p className="text-base-content/80 text-sm sm:text-base">
+                      Pahartali, Chittagong, Bangladesh
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Phone */}
-              <div className="flex items-center gap-4 p-4 rounded-lg bg-base-100 shadow">
-                <div className="p-3 rounded-lg bg-primary text-primary-content">
-                  <FaPhone size={20} />
-                </div>
-                <div>
-                  <h4 className="font-semibold">Phone</h4>
-                  <p>+880 1878142110</p>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="flex items-center gap-4 p-4 rounded-lg bg-base-100 shadow">
-                <div className="p-3 rounded-lg bg-primary text-primary-content">
-                  <FaEnvelope size={20} />
-                </div>
-                <div>
-                  <h4 className="font-semibold">Email</h4>
-                  <p>jamiluddinjishan@gmail.com</p>
+              {/* Social Links */}
+              <div className="pt-4">
+                <h4 className="font-semibold mb-3">Connect with me</h4>
+                <div className="flex gap-3 sm:gap-4">
+                  <a href="#" className="btn btn-ghost btn-circle text-lg sm:text-xl">
+                    <FaGithub />
+                  </a>
+                  <a href="#" className="btn btn-ghost btn-circle text-lg sm:text-xl">
+                    <FaLinkedin />
+                  </a>
+                  <a href="#" className="btn btn-ghost btn-circle text-lg sm:text-xl">
+                    <FaTwitter />
+                  </a>
                 </div>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex gap-4 mt-4">
-              <a href="#" className="btn btn-circle btn-ghost text-xl">
-                <FaGithub />
-              </a>
-              <a href="#" className="btn btn-circle btn-ghost text-xl">
-                <FaLinkedin />
-              </a>
-            </div>
           </div>
 
+
+
           {/* Right Form */}
-          <div className="card bg-base-100/20 border-1 border-gray-100 shadow-xl p-8">
-            <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="card bg-accent/2 shadow-lg p-6 py-10 rounded-2xl max-w-lg md:max-w-xl mx-auto w-full">
+            <h3 className="text-xl sm:text-2xl font-bold mb-6">Send me a message</h3>
+            <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="label">
+                    <span className="label-text">Full Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    className="input input-bordered w-full"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="label">
+                    <span className="label-text">Email Address</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    className="input input-bordered w-full"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="label">
+                  <span className="label-text">Subject</span>
+                </label>
                 <input
                   type="text"
-                  name="name"
-                  placeholder="Your name"
+                  name="subject"
+                  placeholder="Enter subject line"
                   className="input input-bordered w-full"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="your.email@example.com"
-                  className="input input-bordered w-full"
-                  value={formData.email}
+                  value={formData.subject}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <input
-                type="text"
-                name="subject"
-                placeholder="What's this about?"
-                className="input input-bordered w-full"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="Your message here..."
-                className="textarea textarea-bordered w-full"
-                rows="5"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              ></textarea>
+
+              <div>
+                <label className="label">
+                  <span className="label-text">Your Message</span>
+                </label>
+                <textarea
+                  name="message"
+                  placeholder="Enter your message"
+                  className="textarea textarea-bordered w-full"
+                  rows="5"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
+              </div>
 
               <button
                 type="submit"
-                className={`btn btn-primary bg-gradient-to-r from-primary to-secondary text-white border-0 w-full ${isLoading ? "loading" : ""}`}
+                className={`btn btn-primary bg-gradient-to-r from-primary to-secondary text-white w-full mt-4 ${isLoading ? "loading" : ""}`}
                 disabled={isLoading}
               >
                 {isLoading ? "Sending..." : "Send Message"}
@@ -148,6 +193,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
+
   );
 };
 
