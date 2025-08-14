@@ -15,7 +15,7 @@ const Navbar = () => {
 
   const handleDownloadCV = () => {
     window.open(
-      "https://drive.google.com/file/d/1kiQal9j7P5KoYZsGKaQEyJ5TFfVcZwyv/view?usp=drive_link",
+      "https://drive.google.com/file/d/1o7Lc65RNL2nOkg4M2kHBv7OmMl1aPfCj/view?usp=sharing",
       "_blank"
     );
   };

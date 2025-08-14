@@ -13,7 +13,8 @@ const RootLayout = () => {
         <div>
             <Navbar></Navbar>
 
-            <main>
+            <div className="flex flex-col min-h-screen">
+                <main className='flex-grow'>
                 <Banner />
                 <About />
                 <Skills />
@@ -21,8 +22,10 @@ const RootLayout = () => {
                 <Projects />
                 <Contact />
             </main>
+             <Footer />
+            </div>
 
-            <Footer />
+           
         </div>
     );
 };
