@@ -46,17 +46,20 @@ const About = () => {
   const coreStrengths = [
     {
       title: "Problem Solving",
-      description: "Analytical thinking and creative solutions to complex challenges.",
+      description:
+        "Analytical thinking and creative solutions to complex challenges.",
       icon: <Brain className="w-5 h-5 text-accent" />,
     },
     {
       title: "Continuous Learning",
-      description: "Staying updated with latest technologies and best practices.",
+      description:
+        "Staying updated with latest technologies and best practices.",
       icon: <Lightbulb className="w-5 h-5 text-yellow-400" />,
     },
     {
       title: "Attention to Detail",
-      description: "Ensuring pixel-perfect designs and clean, maintainable code.",
+      description:
+        "Ensuring pixel-perfect designs and clean, maintainable code.",
       icon: <Target className="w-5 h-5 text-primary" />,
     },
     {
@@ -101,46 +104,75 @@ const About = () => {
     },
   ];
 
+  // Parent container animation
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // children আসবে একে একে
+      },
+    },
+  };
+
+  // Child animation
   const boxVariants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   return (
-    <section
+    <motion.section
       id="about"
       className="bg-base-200 text-base-content min-h-screen py-20 px-6 md:px-12"
       ref={ref}
+      variants={containerVariants}
+      initial="hidden"
+      animate={controls}
     >
+      {/* Title */}
       <motion.h2
-        className="text-center text-4xl font-bold mb-20 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-pulse"
+        className="text-center text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-pulse"
         variants={boxVariants}
-        initial="hidden"
-        animate={controls}
       >
         About <span className="text-accent">Me</span>
       </motion.h2>
 
+      {/* Subtitle */}
+      <motion.p
+        className="text-center text-lg text-base-content/70 max-w-2xl mx-auto mb-12"
+        variants={boxVariants}
+      >
+        A passionate frontend developer crafting engaging and user-friendly web experiences.
+      </motion.p>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-        {/* Left Box - Personal Info */}
+      {/* Content */}
+      <motion.div
+        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16"
+        variants={containerVariants}
+      >
+        {/* Left Box */}
         <motion.div
-          className={`rounded-3xl border-4 p-10 bg-base-200 shadow-lg
-            ${borderColors[0]} md:min-h-[520px]`}
+          className="rounded-3xl p-10 bg-accent/3  shadow-lg md:min-h-[520px]"
           variants={boxVariants}
-          initial="hidden"
-          animate={controls}
-          transition={{ delay: 0.2 }}
         >
           <div className="flex flex-col items-center mb-8">
             <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-base-100 shadow-xl mb-4">
               <User className="w-12 h-12" />
             </div>
             <h3 className="text-3xl font-semibold">{personalInfo.name}</h3>
-            <p className="badge badge-primary badge-lg mt-2">{personalInfo.title}</p>
+            <p className="badge badge-primary badge-lg mt-2">
+              {personalInfo.title}
+            </p>
           </div>
 
-          <p className="mb-6 text-base-content/90 leading-relaxed">{personalInfo.intro}</p>
+          <p className="mb-6 text-base-content/90 leading-relaxed">
+            {personalInfo.intro}
+          </p>
 
           <div className="mb-6 p-6 bg-primary/10 rounded-xl border border-primary/30">
             <h4 className="text-xl font-semibold flex items-center gap-2 mb-3">
@@ -181,7 +213,9 @@ const About = () => {
                   <div className="text-accent">{icon}</div>
                   <div>
                     <h5 className="font-semibold">{title}</h5>
-                    <p className="text-sm text-base-content/80">{description}</p>
+                    <p className="text-sm text-base-content/80">
+                      {description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -189,14 +223,10 @@ const About = () => {
           </div>
         </motion.div>
 
-        {/* Right Box - Journey */}
+        {/* Right Box */}
         <motion.div
-          className={`rounded-3xl border-4 p-10 bg-base-200 shadow-lg
-            ${borderColors[1]} md:min-h-[520px] flex flex-col justify-start`}
+          className="rounded-3xl p-10 bg-accent/3 shadow-lg md:min-h-[520px] flex flex-col justify-start"
           variants={boxVariants}
-          initial="hidden"
-          animate={controls}
-          transition={{ delay: 0.4 }}
         >
           <div>
             <div className="flex flex-col items-center mb-10">
@@ -204,31 +234,41 @@ const About = () => {
                 <BookOpen className="w-12 h-12" />
               </div>
               <h3 className="text-3xl font-semibold">My Journey</h3>
-              <p className="text-sm text-base-content/70 mt-1 italic">2023 – Present</p>
+              <p className="text-sm text-base-content/70 mt-1 italic">
+                2023 – Present
+              </p>
             </div>
 
             <div className="space-y-6">
-              {journeyMilestones.map(({ phase, period, title, description, icon }, i) => (
-                <div
-                  key={phase}
-                  className={`border-l-4 pl-6 py-4 rounded-md shadow-sm
-                    ${borderColors[i % borderColors.length]
-                    } border-opacity-60 hover:bg-base-300 transition-colors duration-300`}
-                >
-                  <div className="flex items-center gap-3 mb-1">
-                    <div className="text-xl">{icon}</div>
-                    <h4 className="text-lg font-semibold">{title}</h4>
-                    <span className="ml-auto text-xs font-mono text-base-content/60">{period}</span>
-                  </div>
-                  <p className="text-base-content/80 text-sm leading-relaxed">{description}</p>
-                  <span className="badge badge-outline badge-info mt-2 text-xs">{phase}</span>
-                </div>
-              ))}
+              {journeyMilestones.map(
+                ({ phase, period, title, description, icon }, i) => (
+                  <motion.div
+                    key={phase}
+                    className={`border-l-4 pl-6 py-4 rounded-md shadow-sm ${borderColors[i % borderColors.length]
+                      } border-opacity-60 hover:bg-accent/5 transition-colors duration-300`}
+                    variants={boxVariants}
+                  >
+                    <div className="flex items-center gap-3 mb-1">
+                      <div className="text-xl">{icon}</div>
+                      <h4 className="text-lg font-semibold">{title}</h4>
+                      <span className="ml-auto text-xs font-mono text-base-content/60">
+                        {period}
+                      </span>
+                    </div>
+                    <p className="text-base-content/80 text-sm leading-relaxed">
+                      {description}
+                    </p>
+                    <span className="badge badge-outline badge-info mt-2 text-xs">
+                      {phase}
+                    </span>
+                  </motion.div>
+                )
+              )}
             </div>
           </div>
         </motion.div>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 

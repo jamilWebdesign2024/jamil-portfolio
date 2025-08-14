@@ -20,6 +20,18 @@ const Navbar = () => {
     );
   };
 
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const element = document.querySelector(targetId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+    setNavOpen(false);
+  };
+
   const navLinks = [
     { name: "Home", href: "#" },
     { name: "About", href: "#about" },
@@ -30,7 +42,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="p-4 shadow-lg fixed w-full z-50 bg-base-300 text-base-content backdrop-blur-sm">
+    <nav className="p-4 shadow-lg fixed w-full z-50 bg-base-300 text-base-content backdrop-blur-sm h-16 flex items-center">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="text-xl font-bold flex items-center">
@@ -47,16 +59,13 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              className="hover:text-primary transition-colors duration-300"
+              onClick={(e) => handleSmoothScroll(e, link.href)}
+              className="hover:text-primary transition-colors duration-300 cursor-pointer"
             >
               {link.name}
             </a>
           ))}
-
-          {/* Theme Toggle */}
           <ThemeToggle />
-
-          {/* Download CV Button */}
           <button
             onClick={handleDownloadCV}
             className="btn bg-gradient-to-r from-primary to-secondary text-white border-0 flex items-center space-x-2"
@@ -66,7 +75,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Hamburger Icon */}
+        {/* Mobile Hamburger */}
         <div className="md:hidden flex items-center space-x-4">
           <ThemeToggle />
           <button
@@ -79,42 +88,46 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu (Sidebar) */}
+      {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed top-0 left-0 w-3/4 h-full transition-transform duration-300 ease-in-out transform ${navOpen ? "translate-x-0" : "-translate-x-full"
-          } p-6 shadow-2xl bg-base-200 text-base-content`}
+        className={`fixed top-0 left-0 w-72 h-full bg-base-200 text-base-content z-50 transform ${navOpen ? "translate-x-0" : "-translate-x-full"
+          } transition-transform duration-300 ease-in-out flex flex-col justify-between p-6 md:hidden`}
       >
-        <div className="flex justify-end mb-8">
+        <div>
+          <div className="flex justify-end mb-8">
+            <button
+              onClick={handleNavToggle}
+              className="text-3xl focus:outline-none"
+              aria-label="Close menu"
+            >
+              <AiOutlineClose />
+            </button>
+          </div>
+          <ul className="space-y-6 text-lg">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <a
+                  href={link.href}
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
+                  className="block hover:text-primary transition-colors duration-300 cursor-pointer"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Resume Button */}
+        <div className="mt-8">
           <button
-            onClick={handleNavToggle}
-            className="text-3xl focus:outline-none"
-            aria-label="Close menu"
+            onClick={handleDownloadCV}
+            className="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-medium flex items-center justify-center space-x-2"
           >
-            <AiOutlineClose />
+            <AiOutlineDownload className="text-xl" />
+            <span>Resume</span>
           </button>
         </div>
-        <ul className="space-y-6 text-xl">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a
-                href={link.href}
-                onClick={() => setNavOpen(false)}
-                className="block hover:text-primary transition-colors duration-300"
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
-          <li className="mt-8 pt-6 border-t border-base-content/20">
-            <button
-              onClick={handleDownloadCV}
-              className="btn bg-gradient-to-r from-primary to-secondary text-white border-0 w-full flex items-center justify-center space-x-2"
-            >
-              <AiOutlineDownload className="text-xl" />
-              <span>Download CV</span>
-            </button>
-          </li>
-        </ul>
       </div>
 
       {/* Overlay */}

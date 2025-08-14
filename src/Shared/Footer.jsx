@@ -1,6 +1,22 @@
 import React from 'react';
 import { Facebook, Github, Linkedin, Mail, Phone } from 'lucide-react';
 
+
+
+const handleSmoothScroll = (e, targetId) => {
+  e.preventDefault();
+  const element = document.querySelector(targetId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+  setNavOpen(false);
+};
+
+
+
 const Footer = () => {
   const navLinks = [
     { name: 'Home', href: '#' },
@@ -17,7 +33,7 @@ const Footer = () => {
         {/* Brand Section */}
         <div className="lg:w-1/3">
           <a href="#" className="flex justify-center space-x-3 lg:justify-start">
-            <div className="text-xl font-bold flex items-center text-primary">
+            <div className="text-xl font-bold flex items-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-pulse">
               <span className="text-3xl">&lt;</span>
               Jamil
               <span className="text-3xl">/&gt;</span>
@@ -32,12 +48,13 @@ const Footer = () => {
         <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
           {/* Quick Links */}
           <div className="space-y-3">
-            <h3 className="tracking-wide uppercase text-primary">Quick Links</h3>
+            <h3 className="tracking-wide uppercase text-accent">Quick Links</h3>
             <ul className="space-y-1">
               {navLinks.slice(0, 4).map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
+                    onClick={(e) => handleSmoothScroll(e, link.href)}
                     className="link link-hover"
                   >
                     {link.name}
@@ -49,12 +66,13 @@ const Footer = () => {
 
           {/* More Links */}
           <div className="space-y-3">
-            <h3 className="tracking-wide uppercase text-primary">More</h3>
+            <h3 className="tracking-wide uppercase text-accent">More</h3>
             <ul className="space-y-1">
               {navLinks.slice(4).map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
+                    onClick={(e) => handleSmoothScroll(e, link.href)}
                     className="link link-hover"
                   >
                     {link.name}
@@ -66,7 +84,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-3">
-            <h3 className="uppercase text-primary">Contact</h3>
+            <h3 className="uppercase text-accent">Contact</h3>
             <ul className="space-y-1">
               <li>
                 <a
@@ -89,7 +107,7 @@ const Footer = () => {
 
           {/* Social Media */}
           <div className="space-y-3">
-            <div className="uppercase text-primary">Social media</div>
+            <div className="uppercase text-accent">Social media</div>
             <div className="flex justify-start space-x-3">
               <a
                 href="https://facebook.com"
@@ -122,7 +140,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="py-6 text-sm text-center">
+      <div className="py-6 text-sm text-center text-secondary/50">
         © {new Date().getFullYear()} Md Jamil Uddin. All rights reserved.
       </div>
     </footer>
