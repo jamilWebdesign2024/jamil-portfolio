@@ -110,7 +110,7 @@ const Footer = () => {
             <div className="uppercase text-accent">Social media</div>
             <div className="flex justify-start space-x-3">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/skudbjuj"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -119,7 +119,7 @@ const Footer = () => {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/jamilWebdesign2024"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -128,7 +128,7 @@ const Footer = () => {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/md-jamil2"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"

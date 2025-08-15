@@ -6,6 +6,7 @@ import {
   FaReact,
   FaNodeJs,
   FaDatabase,
+  FaFacebook,
 } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
 import Typewriter from "typewriter-effect";
@@ -84,14 +85,14 @@ const Banner = () => {
                 Contact Me <FiArrowRight className="ml-2" />
               </a>
               <div className="flex items-center space-x-4 text-lg">
-                <a href="#" className="hover:text-accent">
+                <a href="https://github.com/jamilWebdesign2024" target="_blank" className="hover:text-accent">
                   <FaGithub />
                 </a>
-                <a href="#" className="hover:text-accent">
-                  <FaTwitter />
-                </a>
-                <a href="#" className="hover:text-accent">
+                <a href="https://www.linkedin.com/in/md-jamil2" target="_blank" className="hover:text-accent">
                   <FaLinkedin />
+                </a>
+                <a href="https://www.facebook.com/skudbjuj" target="_blank" className="hover:text-accent">
+                  <FaFacebook />
                 </a>
               </div>
             </div>
